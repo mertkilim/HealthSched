@@ -10,7 +10,7 @@ namespace HealthSched.DAL.Repositories.Abstract
     public interface IRepository<T> where T : class
     {
         Task<T> GetByIdAsync(int? id);
-        Task<IQueryable<T>> GetByFilter(Expression<Func<T, bool>>? predicate);
+        Task<IEnumerable<T>> GetByFilterAsync(Expression<Func<T, bool>>? predicate);
         Task<T> AddAsync(T entity);
         Task<T> UpdateAsync(T entity);
         Task<T> DeleteAsync(T entity);

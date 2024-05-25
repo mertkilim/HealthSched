@@ -1,34 +1,56 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html style=""lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - HealthSched.UI</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>@ViewData["Title"] HealthSched Hastane Randevu Sistemi</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/HealthSched.UI.styles.css" asp-append-version="true" />
 </head>
-<body>
+<body style="background-color:lavender">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm bg-dark border-bottom box-shadow mb-3" data-bs-theme="dark">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">HealthSched.UI</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <a asp-controller="Home" asp-action="Index">
+                    <img style="width:100px" src="~/assets/images/healthschedlogo.png"/>
+                </a>
+                
+               @*  <a style="text-decoration-color:inherit" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">HealthSched Yönetim Paneli</a> *@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    <ul style="text-align:right" class="navbar-nav me-auto">
+                        <li style="margin-right:30px; margin-left:50px" class="nav-item">
+                            <a class="nav-link text-light" asp-area="Patient" asp-controller="Home" asp-action="Index">Anasayfa</a>
+                        </li>
+                        <li style="margin-right:30px" class="nav-item">
+                            <a class="nav-link text-light" asp-area="Patient" asp-controller="Appointment" asp-action="Create">Randevu Al</a>
+                        </li>
+                        <li style="margin-right:30px"class="nav-item">
+                            <a class="nav-link text-light" asp-area="Admin" asp-controller="Doctor" asp-action="Index">Doktor Yönetimi</a>
+                        </li>
+                        <li style="margin-right:30px" class="nav-item">
+                            <a class="nav-link text-light" asp-area="Admin" asp-controller="Patient" asp-action="Index">Hasta Yönetimi</a>
+                        </li>
+                        <li style="margin-right:30px" class="nav-item">
+                            <a class="nav-link text-light" asp-area="Admin" asp-controller="Title" asp-action="Index">Title Yönetimi</a>
+                        </li>
+                        <li style="margin-right:30px" class="nav-item">
+                            <a class="nav-link text-light" asp-area="Admin" asp-controller="Appointment" asp-action="Index">Randevu Yönetimi</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a style="margin-right:30px" class="nav-link text-light" asp-area="Admin" asp-controller="Policlinic" asp-action="Index">Poliklinik Yönetimi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a style="margin-right:30px" class="nav-link text-light" asp-area="Admin" asp-controller="Contact" asp-action="Contact">İletişime Geçilecek Kişiler</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="Patient" asp-controller="Contact" asp-action="Index"> İletişim </a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
-                </div>
-            </div>
         </nav>
     </header>
     <div class="container">
@@ -36,15 +58,19 @@
             @RenderBody()
         </main>
     </div>
+    <div class="footer fixed-bottom" style="height:30px">
+        <footer style="position:sticky; text-align:right; width:100%" class="border-top bg-dark text-light">
+            <div class="container">
+                &copy; 2024 - HealthSched Hastane Randevu Sistemi <i class="bi bi-hospital"></i></a>
+            </div>
+        </footer>
+    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - HealthSched.UI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    @await Component.InvokeAsync("Notyf")
     @await RenderSectionAsync("Scripts", required: false)
+    
 </body>
 </html>

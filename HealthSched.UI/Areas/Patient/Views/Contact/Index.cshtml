@@ -1,0 +1,49 @@
+﻿@using HealthSched.Models.Models.Concrete
+@model Contact
+
+<div style="display:flex; justify-content:center" class="container my-5">
+    <div class="card text-black bg-secondary mb-3" style="width:700px">
+        <div style="text-align:center" class="card-header">İLETİŞİM FORMU</div>
+        <div class="card-body">
+            <form asp-action="Contact" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div style="margin-top:20px" class="form-group">
+                    <label asp-for="FullName" style="margin-bottom:10px; color:black" class="control-label">Ad Soyad</label>
+                    <input asp-for="FullName" class="form-control" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+                <div style="margin-top:20px" class="form-group">
+                    <label asp-for="Email" style="margin-bottom:10px; color:black" class="control-label">E-mail</label>
+                    <input asp-for="Email" type="email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div  style="margin-top:20px" class="form-group">
+                    <label asp-for="PhoneNumber" style="margin-bottom:10px; color:black" class="control-label">Telefon Numarası</label>
+                    <input asp-for="PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div  style="margin-top:20px" class="form-group">
+                    <label asp-for="Description" style="margin-bottom:10px; color:black" class="control-label">Konu</label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div >
+                    <label asp-for="Message" style="color:black;margin-top:20px" for="exampleTextarea" class="form-label mt-4" data-sider-select-id="dec570de-602f-409a-9735-e39fc4c6f68f">Mesaj</label>
+                    <textarea asp-for="Message" class="form-control" id="exampleTextarea" rows="3" data-sider-insert-id="d96bcd9d-51ac-439f-a1ff-905677a0300a" data-sider-select-id="bb3fd84d-d8e1-494d-a3e3-288024564f43"></textarea>
+                    <span asp-validation-for="Message" class="text-danger"></span>
+                </div>
+                <br />
+                <div style="margin-bottom:5px; display:flex; justify-content:center" class="form-group">
+                    <input asp-action="Contact" type="submit" value="Kaydet" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+}

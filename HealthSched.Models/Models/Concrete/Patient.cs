@@ -17,32 +17,10 @@ namespace HealthSched.Models.Models.Concrete
         public bool Gender { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
-
-        private DateTime _BirthDate;
-        public DateTime BirthDate
-        {
-            get
-            {
-                return _BirthDate;
-            }
-            set
-            {
-                _BirthDate = value;
-                CalculateAge();
-            }
-        }
-        public int Age { get; private set; }
+        public string Password { get; set; }
+        public DateTime BirthDate{ get; set; }
         public ICollection<Appointment>? Appointments { get; set; }
         public ICollection<Policlinic> Policlinics { get; set; }
         public ICollection<Doctor> Doctors { get; set; }
-        private void CalculateAge()
-        {
-            int age = DateTime.Today.Year - _BirthDate.Year;
-
-            if (_BirthDate.Date > DateTime.Today.AddYears(-age))
-                age--;
-
-            Age = age;
-        }
     }
 }

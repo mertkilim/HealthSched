@@ -15,5 +15,6 @@ namespace HealthSched.Models.DTOs.Doctor
         public string Email { get; set; }
         public int? PoliclinicId { get; set; }
         public int? TitleId { get; set; }
+        public string Password { get; set; }
     }
 }

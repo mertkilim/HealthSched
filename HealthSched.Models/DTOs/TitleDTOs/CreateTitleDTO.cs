@@ -9,5 +9,6 @@ namespace HealthSched.Models.DTOs.TitleDTOs
     public class CreateTitleDTO
     {
         public string TitleName { get; set; }
+        public  ICollection<int>? DoctorsId { get; set; }
     }
 }

@@ -1,0 +1,22 @@
+﻿@model HealthSched.Models.Models.Concrete.Policlinic
+
+<div class="container my-5">
+    <h2>@Model.PoliclinicName</h2>
+    <table class="table table-bordered table-striped text-center">
+        <thead>
+            <tr>
+                <th>Doktor Adı</th>
+                <th>Poliklinik</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var doctor in Model.Doctors)
+            {
+                <tr class="align-middle">
+                    <td>@doctor.FullName</td>
+                    <td>@doctor.Policlinic.PoliclinicName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

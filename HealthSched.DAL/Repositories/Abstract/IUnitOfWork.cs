@@ -13,6 +13,7 @@ namespace HealthSched.DAL.Repositories.Abstract
         public IPatientRepository Patient { get; }
         public IPoliclinicRepository Policlinic { get; }
         public ITitleRepository Title { get; }
+        public IContactRepository Contact { get; }
 
         void Save();
     }

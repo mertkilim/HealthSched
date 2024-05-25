@@ -15,6 +15,7 @@ namespace HealthSched.Models.Models.Concrete
         public string IdentificationNumber { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
+        public string Password { get; set; }
         public int? PoliclinicId { get; set; }
         public Policlinic Policlinic { get; set; }
         public int? TitleId { get; set; }

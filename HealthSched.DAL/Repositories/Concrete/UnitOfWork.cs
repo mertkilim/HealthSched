@@ -11,6 +11,7 @@ namespace HealthSched.DAL.Repositories.Concrete
     public class UnitOfWork : IUnitOfWork
     {
         private readonly SqlServerDbContext _context;
+
         public IAppointmentRepository Appointment { get; private set; }
 
         public IDoctorRepository Doctor { get; private set; }
@@ -21,6 +22,8 @@ namespace HealthSched.DAL.Repositories.Concrete
 
         public ITitleRepository Title { get; private set; }
 
+        public IContactRepository Contact { get; private set; }
+
         public UnitOfWork( SqlServerDbContext context)
         {
             _context = context;
@@ -29,6 +32,7 @@ namespace HealthSched.DAL.Repositories.Concrete
             Patient = new PatientRepository(_context);
             Title = new TitleRepository(_context);
             Policlinic = new PoliclinicRepository(_context);
+            Contact = new ContactRepository(_context);
         }
 
         public void Save()

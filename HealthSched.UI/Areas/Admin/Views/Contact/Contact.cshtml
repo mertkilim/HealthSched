@@ -1,0 +1,55 @@
+﻿@using HealthSched.Models.Models.Concrete
+@using HealthSched.UI.Models
+
+@model ContactViewModel
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<div class="container my-5">
+    <table class="table table-bordered table-striped text-center">
+        <thead>
+            <tr>
+                <th>Ad Soyad</th>
+                <th>Email</th>
+                <th>Telefon Numarası</th>
+                <th>Konu</th>
+                <th>Mesaj</th>
+                <th>İletişime Geç</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contact in Model.Contacts)
+            {
+                <tr class="align-middle">
+                    <td>@contact.FullName</td>
+                    <td>@contact.Email</td>
+                    <td>@contact.PhoneNumber</td>
+                    <td>@contact.Description</td>
+                    <td>@contact.Message</td>
+                    <td>
+                        <form asp-action="Call">
+                            <input type="hidden" asp-for="Contact.Id" />
+                            <button class="btn btn-warning" asp-action="Call" asp-route-id="@contact.Id">
+                                <i class="bi bi-telephone"></i>
+                            </button>
+                            <button class="btn btn-danger" asp-action="Call" asp-route-id="@contact.Id">
+                                <i class="bi bi-envelope"></i>
+                            </button>
+
+                        </form>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts
+{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+}

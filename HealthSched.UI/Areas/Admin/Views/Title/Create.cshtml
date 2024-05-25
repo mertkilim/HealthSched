@@ -1,0 +1,28 @@
+﻿@using HealthSched.Models.DTOs.TitleDTOs
+
+@model CreateTitleDTO
+
+
+<div style="align-items:center" class="card">
+
+    <div class="card-body">
+
+        <form asp-action="Create" method="post">
+            <div style="justify-content:center" class="mb-3">
+                <label asp-for="TitleName" class="form-label">Title Adı</label>
+                <input asp-for="TitleName" class="form-control" >
+              <div class="text-danger"> <span asp-validation-for="TitleName"></span> </div>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-success" type="submit">Kaydet</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts
+{
+     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive.min.js"></script>
+
+}

@@ -1,0 +1,72 @@
+﻿@using HealthSched.UI.Models
+@model AppointmentViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Hasta Bilgileri
+            </th>
+            <th>
+                Hekim Bilgileri
+            </th>
+            <th>
+                Poliklinik Bilgileri
+            </th>
+            <th>
+                Randevu Zamanı
+            </th>
+            <th>
+                Tamamlandı mı?
+            </th>
+            <th>
+                Randevu Oluşturulma Zamanı
+            </th>
+            <th>
+                Randevu Güncellenme Tarihi
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ServerAppointments) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doctor.DoctorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Policlinic.PoliclinicName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isCompleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
