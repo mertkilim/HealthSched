@@ -1,11 +1,14 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
 using HealthSched.DAL.Repositories.Abstract;
 using HealthSched.UI.Models;
+using HealthSched.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HealthSched.UI.Areas.Admin.Controllers.Contact
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class ContactController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

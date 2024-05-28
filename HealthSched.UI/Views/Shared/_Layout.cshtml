@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using HealthSched.Utility
+<!DOCTYPE html>
 <html style=""lang="en">
 <head>
     <meta charset="utf-8" />
@@ -21,12 +22,17 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul style="text-align:right" class="navbar-nav me-auto">
-                        <li style="margin-right:30px; margin-left:50px" class="nav-item">
-                            <a class="nav-link text-light" asp-area="Patient" asp-controller="Home" asp-action="Index">Anasayfa</a>
-                        </li>
-                        <li style="margin-right:30px" class="nav-item">
-                            <a class="nav-link text-light" asp-area="Patient" asp-controller="Appointment" asp-action="Create">Randevu Al</a>
-                        </li>
+                        @if (User.IsInRole(SD.Role_Patient))
+                        {
+                            <li style="margin-right:30px; margin-left:50px" class="nav-item">
+                                <a class="nav-link text-light" asp-area="Patient" asp-controller="Home" asp-action="Index">Anasayfa</a>
+                            </li>
+                            <li style="margin-right:30px" class="nav-item">
+                                <a class="nav-link text-light" asp-area="Patient" asp-controller="Appointment" asp-action="Create">Randevu Al</a>
+                            </li>
+                        }
+                        @if(User.IsInRole(SD.Role_Admin))
+                        {
                         <li style="margin-right:30px"class="nav-item">
                             <a class="nav-link text-light" asp-area="Admin" asp-controller="Doctor" asp-action="Index">Doktor Yönetimi</a>
                         </li>
@@ -45,10 +51,14 @@
                         <li class="nav-item">
                             <a style="margin-right:30px" class="nav-link text-light" asp-area="Admin" asp-controller="Contact" asp-action="Contact">İletişime Geçilecek Kişiler</a>
                         </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="Patient" asp-controller="Contact" asp-action="Index"> İletişim </a>
-                        </li>
+                        }
+                        @if (User.IsInRole(SD.Role_Patient))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="Patient" asp-controller="Contact" asp-action="Index"> İletişim </a>
+                            </li>
+                        }
+                        
                     </ul>
                     <partial name="_LoginPartial" />
         </nav>

@@ -12,10 +12,13 @@ using HealthSched.DAL.Repositories.Abstract;
 using AspNetCoreHero.ToastNotification.Abstractions;
 using HealthSched.DAL.Repositories.Concrete;
 using HealthSched.Models.DTOs.PoliclinicDTOs;
+using HealthSched.Utility;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HealthSched.UI.Areas.Admin.Controllers.Policlinic
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class PoliclinicController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

@@ -8,10 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using HealthSched.DAL.DbContexts.SqlServer;
 using HealthSched.Models.Models.Concrete;
 using HealthSched.DAL.Repositories.Abstract;
+using Microsoft.AspNetCore.Authorization;
+using HealthSched.Utility;
 
 namespace HealthSched.UI.Areas.Admin.Controllers.Appointment
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class AppointmentController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

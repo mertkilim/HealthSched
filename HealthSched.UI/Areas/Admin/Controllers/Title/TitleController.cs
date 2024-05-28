@@ -3,12 +3,15 @@ using HealthSched.DAL.Repositories.Abstract;
 using HealthSched.Models.DTOs.TitleDTOs;
 using HealthSched.Models.Models.Concrete;
 using HealthSched.UI.Models;
+using HealthSched.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
 namespace HealthSched.UI.Areas.Admin.Controllers.Title
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class TitleController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
