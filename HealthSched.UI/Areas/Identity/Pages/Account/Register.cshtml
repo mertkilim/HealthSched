@@ -22,12 +22,18 @@
                 <label asp-for="Input.Password">Şifre</label>
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
+           
             <div class="form-floating mb-3">
                 <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
                 <label asp-for="Input.ConfirmPassword">Şifrenizi Tekrar Giriniz.</label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            @* <div class="form-floating mb-3">
+                <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select">
+                    <option disabled selected>-Rol Seçiniz-</option>
+                </select>
+            </div> *@
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Kaydol</button>
         </form>
     </div>
     <div class="col-md-6 col-md-offset-2">
@@ -39,7 +45,7 @@
                 {
                     <div>
                         <p>
-                            Hesap oluşturmak için bu sayfayı kullanabilirsiniz..
+                            Hesap oluşturmak için bu sayfayı kullanabilirsiniz.
                         </p>
                     </div>
                 }

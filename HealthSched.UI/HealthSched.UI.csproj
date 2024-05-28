@@ -33,6 +33,7 @@
   <ItemGroup>
     <ProjectReference Include="..\HealthSched.DAL\HealthSched.DAL.csproj" />
     <ProjectReference Include="..\HealthSched.Models\HealthSched.Models.csproj" />
+    <ProjectReference Include="..\HealthSched.Utility\HealthSched.Utility.csproj" />
   </ItemGroup>
 
 </Project>

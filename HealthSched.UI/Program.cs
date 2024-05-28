@@ -6,18 +6,22 @@ using HealthSched.DAL.Repositories.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using HealthSched.Utility;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<SqlServerDbContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<SqlServerDbContext>();
+builder.Services.AddIdentity<IdentityUser,IdentityRole>().AddEntityFrameworkStores<SqlServerDbContext>().AddDefaultTokenProviders();
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IEmailSender, EmailSender>();
+
 
 builder.Services.AddNotyf(config =>
 {

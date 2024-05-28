@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthSched.UI", "HealthSch
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthSched.BL", "HealthSched.BL\HealthSched.BL.csproj", "{8EA485AD-56C2-4B44-B319-8712EB576957}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthSched.Utility", "HealthSched.Utility\HealthSched.Utility.csproj", "{6F38BD1F-A2BF-4609-A71D-A854120E7EC6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{8EA485AD-56C2-4B44-B319-8712EB576957}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EA485AD-56C2-4B44-B319-8712EB576957}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EA485AD-56C2-4B44-B319-8712EB576957}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F38BD1F-A2BF-4609-A71D-A854120E7EC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F38BD1F-A2BF-4609-A71D-A854120E7EC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F38BD1F-A2BF-4609-A71D-A854120E7EC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F38BD1F-A2BF-4609-A71D-A854120E7EC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
