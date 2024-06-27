@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HealthSched.Models.DTOs.Doctor
 {
-    internal class CreateDoctorDTO
+    public class CreateDoctorDTO
     {
         public string DoctorName { get; set; }
         public string DoctorSurname { get; set; }

@@ -19,8 +19,41 @@
                     <h3 class="border-bottom pb-3 mb-4 text-secondary text-center">HealthSched Hastane Randevu Sistemi</h3>
                     
                     <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                    <div class="form-floating mb-3 col-md-6">
+                        <input asp-for="Input.Name" class="form-control" aria-required="true"/>
+                        <label class="ms-2 text-muted" asp-for="Input.Name">Ad</label>
+                        <span asp-validation-for="Input.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3 col-md-6">
+                        <input asp-for="Input.Surname" class="form-control" aria-required="true"/>
+                        <label class="ms-2 text-muted" asp-for="Input.Surname">Soyad</label>
+                        <span asp-validation-for="Input.Surname" class="text-danger"></span>
+                    </div>
                     <div class="form-floating mb-3 col-md-12">
-                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                        <input asp-for="Input.IdentificationNumber" class="form-control" aria-required="true" type="number" maxlength="99999999998">
+                        <label class="ms-2 text-muted" asp-for="Input.IdentificationNumber">TC. Kimlik No</label>
+                        <span asp-validation-for="Input.IdentificationNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3 col-md-12">
+                        <input asp-for="Input.PhoneNumber" class="form-control" aria-required="true"/>
+                        <label class="ms-2 text-muted" asp-for="Input.PhoneNumber">Telefon Numarası</label>
+                        <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div style="align-items:center ; display:flex; justify-content:center" class="form-floating mb-3 col-md-6">
+                        <div>
+                            <label style="margin-right:10px" class="ms-2 text-muted" asp-for="Input.Gender">Cinsiyet :</label>
+                            <input type="radio" asp-for="Input.Gender" value="true" /> Erkek
+                            <input style="margin-left:10px" type="radio" asp-for="Input.Gender" value="false"/> Kadın
+                        </div>
+                        <span asp-validation-for="Input.Gender" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3 col-md-6">
+                        <input asp-for="Input.BirthDate" class="form-control" aria-required="true" type="date"/>
+                        <label class="ms-2 text-muted" asp-for="Input.BirthDate">Doğum Tarihi</label>
+                        <span asp-validation-for="Input.BirthDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3 col-md-12">
+                        <input asp-for="Input.Email" class="form-control" aria-required="true" placeholder="name@example.com" />
                         <label class="ms-2 text-muted" asp-for="Input.Email">Email</label>
                         <span asp-validation-for="Input.Email" class="text-danger"></span>
                     </div>

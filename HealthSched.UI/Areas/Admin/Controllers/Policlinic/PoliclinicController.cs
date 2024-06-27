@@ -24,7 +24,7 @@ namespace HealthSched.UI.Areas.Admin.Controllers.Policlinic
         private readonly IUnitOfWork _unitOfWork;
         private readonly INotyfService _notyfService;
 
-        public PoliclinicController(UnitOfWork unitOfWork, INotyfService notyfService)
+        public PoliclinicController(IUnitOfWork unitOfWork, INotyfService notyfService)
         {
             _unitOfWork = unitOfWork;
             _notyfService = notyfService;
@@ -52,8 +52,6 @@ namespace HealthSched.UI.Areas.Admin.Controllers.Policlinic
                 HealthSched.Models.Models.Concrete.Policlinic pol = new()
                 {
                     PoliclinicName = policlinicModel.PoliclinicName,
-
-
                 };
                 try
                 {
@@ -111,13 +109,24 @@ namespace HealthSched.UI.Areas.Admin.Controllers.Policlinic
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(HealthSched.Models.Models.Concrete.Policlinic policlinic)
+        public async Task<IActionResult> Edit(UpdatePoliclinicDTO policlinic)
         {
             if (ModelState.IsValid)
             {
-                await _unitOfWork.Policlinic.UpdateAsync(policlinic);
-                _notyfService.Success("Düzenleme İşlemi başarılı");
+                var pol = await _unitOfWork.Policlinic.GetAsync(x => x.Id == policlinic.Id);
+
+                pol.Id = policlinic.Id;
+                pol.UpdatedDate = DateTime.UtcNow.AddHours(3);
+                pol.PoliclinicName = policlinic.PoliclinicName;
+                pol.isDeleted = false;
+
+                await _unitOfWork.Policlinic.UpdateAsync(pol);
+                _notyfService.Success("Başarılı");
                 return RedirectToAction("Index");
+
+                //await _unitOfWork.Policlinic.UpdateAsync(policlinic);
+                //_notyfService.Success("Düzenleme İşlemi başarılı");
+                //return RedirectToAction("Index");
             }
 
             return View();
@@ -130,13 +139,13 @@ namespace HealthSched.UI.Areas.Admin.Controllers.Policlinic
                 return NotFound("Id boş olamaz");
             }
 
-            var title = await _unitOfWork.Policlinic.GetAsync(x => x.Id == id, "Doctors");
+            var pol = await _unitOfWork.Policlinic.GetAsync(x => x.Id == id, "Policlinics");
 
-            if (title == null)
+            if (pol == null)
             {
-                return NotFound("Kayıtlı doktor bulunamadı.");
+                return NotFound("Kayıtlı poliklinik bulunamadı.");
             }
-            return View(title);
+            return View(pol);
         }
 
     }

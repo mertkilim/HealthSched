@@ -14,7 +14,7 @@
     <header>
         <nav class="navbar navbar-expand-sm bg-dark border-bottom box-shadow mb-3" data-bs-theme="dark">
             <div class="container-fluid">
-                <a asp-controller="Home" asp-action="Index">
+                <a asp-area="Patient" asp-controller="Home" asp-action="Index">
                     <img style="width:100px" src="~/assets/images/healthschedlogo.png"/>
                 </a>
                 
@@ -33,23 +33,26 @@
                         }
                         @if(User.IsInRole(SD.Role_Admin))
                         {
-                        <li style="margin-right:30px"class="nav-item">
+                        <li style="margin-right:20px"class="nav-item">
                             <a class="nav-link text-light" asp-area="Admin" asp-controller="Doctor" asp-action="Index">Doktor Yönetimi</a>
                         </li>
-                        <li style="margin-right:30px" class="nav-item">
+                        <li style="margin-right:20px" class="nav-item">
                             <a class="nav-link text-light" asp-area="Admin" asp-controller="Patient" asp-action="Index">Hasta Yönetimi</a>
                         </li>
-                        <li style="margin-right:30px" class="nav-item">
+                        <li style="margin-right:20px" class="nav-item">
                             <a class="nav-link text-light" asp-area="Admin" asp-controller="Title" asp-action="Index">Title Yönetimi</a>
                         </li>
-                        <li style="margin-right:30px" class="nav-item">
+                        <li style="margin-right:20px" class="nav-item">
                             <a class="nav-link text-light" asp-area="Admin" asp-controller="Appointment" asp-action="Index">Randevu Yönetimi</a>
                         </li>
                         <li class="nav-item">
-                            <a style="margin-right:30px" class="nav-link text-light" asp-area="Admin" asp-controller="Policlinic" asp-action="Index">Poliklinik Yönetimi</a>
+                            <a style="margin-right:20px" class="nav-link text-light" asp-area="Admin" asp-controller="Policlinic" asp-action="Index">Poliklinik Yönetimi</a>
                         </li>
+                            <li class="nav-item">
+                                <a style="margin-right:20px" class="nav-link text-light" asp-area="Admin" asp-controller="User" asp-action="Index">Kullanıcı Yönetimi</a>
+                            </li>
                         <li class="nav-item">
-                            <a style="margin-right:30px" class="nav-link text-light" asp-area="Admin" asp-controller="Contact" asp-action="Contact">İletişime Geçilecek Kişiler</a>
+                            <a style="margin-right:20px" class="nav-link text-light" asp-area="Admin" asp-controller="Contact" asp-action="Contact">İletişime Geçilecek Kişiler</a>
                         </li>
                         }
                         @if (User.IsInRole(SD.Role_Patient))

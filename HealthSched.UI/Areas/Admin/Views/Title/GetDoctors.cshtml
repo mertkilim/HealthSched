@@ -1,29 +1,4 @@
 ﻿@using HealthSched.Models.Models.Concrete
-@* @model Title *@
-
-@* <div class="container my-5">
-    
-    <table class="table table-bordered table-striped text-center">
-        <thead>
-            <tr>
-                <th>Doktor Adı Soyadı</th>
-                <th>Polikliniği</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var doctor in Model)
-            {
-                <tr class="align-middle">
-                    <td>@doctor.FullName</td>
-                    <td>@doctor.Policlinic.PoliclinicName</td>
-                    <td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
- *@
-
 @model HealthSched.Models.Models.Concrete.Title
 
 <div class="container my-5">

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
@@ -81,8 +82,8 @@ namespace HealthSched.UI.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage ="Email alanı boş bırakılamaz.")]
+            [EmailAddress(ErrorMessage ="Girdiğiniz email doğru formatta değil.")]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
@@ -90,8 +91,8 @@ namespace HealthSched.UI.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [Required(ErrorMessage ="Şifre alanı boş bırakılamaz.")]
+            [StringLength(100, ErrorMessage = "Şifreniz en az {2}, en fazla {1} karakter olabilir.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }
@@ -102,8 +103,17 @@ namespace HealthSched.UI.Areas.Identity.Pages.Account
             /// </summary>
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Compare("Password", ErrorMessage = "Girdiğiniz şifreler eşleşmiyor.")]
             public string ConfirmPassword { get; set; }
+
+            public string IdentificationNumber { get; set; }
+
+            public string Name { get; set; }
+            public string Surname { get; set; }
+            public bool Gender { get; set; }
+            public string PhoneNumber { get; set; }
+           
+            public DateTime BirthDate { get; set; }
 
             public string? Role { get; set; }
 
@@ -139,9 +149,10 @@ namespace HealthSched.UI.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
-
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+                
+                await _userStore.SetUserNameAsync(user, Input.IdentificationNumber, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+                
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
